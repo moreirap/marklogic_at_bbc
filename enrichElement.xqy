@@ -1,6 +1,6 @@
 (:  __________________________________________________________
  ::  
- ::  Retrieves all titles of a TitleGroup
+ ::  Enrich an entity
  :: __________________________________________________________
   :)
 
@@ -47,7 +47,6 @@ declare function local:enrichArrayNode ($x as node(), $childNodes as node()*, $d
             $x,
             element {xs:QName($nodeName)} {
                 element {xs:QName(fn:string-join(("ArrayOf", $nodeName),""))} {
-                    attribute count { count($childNodes) },
                     for $doc in $childNodes
                     return local:dispatch ($doc, $deep)  
                 }
